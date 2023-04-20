@@ -9,12 +9,17 @@
  *
  * Return: no return.
  */
-
-void array_iterator(int *array, size_t size, void (*action)(int))
+int int_index(int *array, int size, int (*cmp)(int))
 {
-	unsigned int i;
+	int i;
 
-	if (array && action)
+	if (array && cmp && size)
+	{
 		for (i = 0; i < size; i++)
-			action(array[i]);
+		{
+			if (cmp(array[i]))
+				return (i);
+		}			
+	}
+	return (-1);
 }
